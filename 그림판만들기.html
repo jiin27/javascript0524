@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그림판만들기</title>
+    <style>
+        #wrapper{
+            width: 700px;
+            height: 550px;
+            background: whitesmoke;
+            margin: auto;
+        }
+        #header{
+            width: 100%;
+            height: 50px;
+            background: rgb(230, 230, 230);
+            position: relative;
+            border: 1px solid slategray;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        #header select{
+            width: 150px;
+        }
+        #header div{
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            margin-top: 8px;
+        }
+        #content{
+            width: 100%;
+            height: 500px;
+            background: whitesmoke;
+            border: 1px solid slategray;
+        }
+    </style>
+    <script>
+        let header;
+
+        function init(){
+            header=document.getElementById("header");
+            
+        }
+
+        addEventListener("load", function(){
+            init();
+
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <select>
+                <option>두께선택</option>
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="8">8</option>
+            </select>
+            <div id="violet" style="background: palevioletred;"></div>
+            <div id="khaki" style="background: khaki;"></div>
+            <div id="blue" style="background: cornflowerblue;"></div>
+            <button>재생</button>
+        </div>
+        <div id="content"></div>
+    </div>
+</body>
+</html>

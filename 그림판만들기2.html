@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width:700px;
+            height: 550px;
+            background: whitesmoke;
+            margin: auto;ow
+        }
+        #header{
+            width:100%;
+            height:50px;
+            background: rgb(230, 230, 230);
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        #content{
+            width:100%;
+            height:500px;
+            background-color:whitesmoke;
+            position: relative;
+        }
+        #header div{
+            width:40px;
+            height:40px;
+            display:inline-block;
+            margin-top: 5px;
+        }
+        select{
+            width:150px;
+            font-size:15px;
+        }
+        button{
+            width:80px;
+            height:35px;
+        }
+    </style>
+    <script>
+        let sel; //select 박스, 연필의 두께 결정
+        let red, green, orange; //연필의 색상
+        let bt; //재생버튼
+        let content;
+        let dot;
+        let flag=false;
+        let dotWidth=2; //점의 너비를 결정하는 전역변수
+        let dotHeight=2; //점의 높이를 결정하는 전역변수
+        let dotImg="dot.png";
+
+        //문서 내 점을 표현하는 이미지를 동적으로 생성하여 content에 붙이자
+        //좌표는 마우스의 좌표로!
+        function createDot(x, y){
+            dot=document.createElement("img");
+            dot.src="../images/"+dotImg;
+            dot.style.width=dotWidth+"px";
+            dot.style.height=dotHeight+"px";
+            dot.style.position="absolute";
+            dot.style.left=x+"px";
+            dot.style.top=y+"px";
+
+            content.appendChild(dot);
+        }
+
+        function dotColor(){
+            red.addEventListener("click", function(){
+                dotImg="dot.png"
+            });
+            green.addEventListener("click", function(){
+                dotImg="dot2.png"
+            });
+            orange.addEventListener("click", function(){
+                dotImg="dot3.png"
+            });
+        }
+
+        function dotPx(){
+        }
+
+        function init(){
+            sel=document.getElementById("sel");
+            red=document.getElementById("red");
+            green=document.getElementById("green");
+            orange=document.getElementById("orange");
+            bt=document.querySelector("button");
+            content=document.getElementById("content");
+        }
+
+        addEventListener("load", function(){
+            init();
+            dotPx();
+            dotColor();
+            
+            //content 에 마우스 클릭과 떼기 이벤트 연결
+            content.addEventListener("mousedown", function(){
+                flag=true;
+            });
+            
+            content.addEventListener("mouseup", function(){
+                flag=false;
+            });
+            
+            //content 에 마우스 움직임 이벤트 연결하기
+            content.addEventListener("mousemove", function(){
+                if(flag){
+                    console.log("마우스 움직이고 있어?");
+                    //content 라는 div를 기준으로 한 좌표를 넘겨야 한다.
+                    createDot(event.offsetX, event.offsetY);
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <select  id="sel">
+                <option>두께선택</option>
+                <option value="1" id="op1">1</option>
+                <option value="4" id="op4">4</option>
+                <option value="7" id="op7">7</option>
+                <option value="10" id="op10">10</option>
+            </select>
+            <div id="red" style="background:red"></div>                
+            <div id="green" style="background:green"></div>                
+            <div id="orange" style="background:orange"></div>                
+            <button>재생</button>
+        </div>
+        <div id="content"></div>
+    </div>
+</body>
+</html>

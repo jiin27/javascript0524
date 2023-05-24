@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차원배열개념</title>
+    <script>
+        let fruit=['사과', '딸기', '포도', "멜론"];
+        let car=["벤츠", "BMW", "제네시스", "아우디"];
+        let subject=["Java", "JSP", "Spring", "Oracle"];
+
+        let box=[];
+        box.push(fruit); //push() = 새로운 공간을 추가해 데이터를 넣는 것
+        box.push(car);// box는 2층짜리 배열이 된다.
+        box.push(subject); // 3층짜리 배열
+
+        //첫 번째 층에 있는 모든 과일명을 출력하시오.
+        for(let a=0; a<box.length; a++){
+            for(let i=0; i<box[a].length; i++){
+                document.write(box[a][i]);
+            }
+            document.write("<br>"); //층은 바깥 for문과 관련있으므로 층마다 줄바꿈을 주려면 바깥쪽 for문에 적어야 함.
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
